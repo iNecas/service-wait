@@ -15,7 +15,10 @@ SERVICE=$1
 COMMAND=$2
 
 PLUGINS_DIR=${PLUGINS_DIR:-"$(dirname $(readlink -f $BASH_SOURCE))/../plugins"}
+# number of attemts to check the service
 WAIT_MAX=${WAIT_MAX:-30}
+# detault delay between attempts
+SLEEP=${SLEEP:-1}
 
 # Plugins DSL
 # ===========
@@ -77,7 +80,7 @@ wait-for-command () {
 }
 
 service-wait-sleep () {
-    sleep 1
+    sleep $SLEEP
 }
 
 # Execution
